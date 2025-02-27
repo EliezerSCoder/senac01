@@ -37,6 +37,7 @@
             label3 = new Label();
             pictureBox1 = new PictureBox();
             labelResultado = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(331, 271);
+            button1.Location = new Point(288, 275);
             button1.Name = "button1";
             button1.Size = new Size(90, 31);
             button1.TabIndex = 2;
@@ -89,11 +90,13 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.FlatStyle = FlatStyle.Popup;
-            label3.Font = new Font("Modern No. 20", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(269, 62);
+            label3.Font = new Font("Algerian", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Lime;
+            label3.Location = new Point(244, 64);
             label3.Name = "label3";
-            label3.Size = new Size(222, 29);
+            label3.Size = new Size(279, 39);
             label3.TabIndex = 5;
             label3.Text = "CLONA CARTÃO ";
             // 
@@ -109,14 +112,26 @@
             // labelResultado
             // 
             labelResultado.AutoSize = true;
-            labelResultado.Font = new Font("Book Antiqua", 20.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelResultado.BackColor = Color.Transparent;
+            labelResultado.Font = new Font("Book Antiqua", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelResultado.ForeColor = Color.White;
-            labelResultado.Location = new Point(261, 323);
+            labelResultado.Location = new Point(199, 322);
             labelResultado.Name = "labelResultado";
-            labelResultado.Size = new Size(21, 32);
+            labelResultado.Size = new Size(11, 17);
             labelResultado.TabIndex = 7;
             labelResultado.Text = ".";
-            labelResultado.Click += labelResultado_Click;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(384, 275);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 31);
+            button2.TabIndex = 8;
+            button2.Text = "CADASTRO";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // FormLogin
             // 
@@ -125,6 +140,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(789, 417);
+            Controls.Add(button2);
             Controls.Add(labelResultado);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -151,5 +167,6 @@
         private Label label3;
         private PictureBox pictureBox1;
         private Label labelResultado;
+        private Button button2;
     }
 }
