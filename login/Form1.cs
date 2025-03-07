@@ -1,4 +1,7 @@
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Text;
+using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace login
 {
@@ -78,21 +81,6 @@ namespace login
                     labelResultado.Text = "usuario ou senha incorretos...";
                     labelResultado.ForeColor = Color.Red;
                 }
-
-                /*private void button2_Click(object sender, EventArgs e)
-                {
-                    Random random = new Random();
-                    int index = random.Next(0, 3);
-
-                    string[] textos = { "Texto 1", "Texto 2", "Texto 3" };
-                    string textoSelecionado = textos[index];
-                }
-
-              
-                private void textBox1_TextChanged(object sender, EventArgs e)*/
-                {
-
-                }
             }
         }
 
@@ -111,6 +99,8 @@ namespace login
             string NovoUsuarioBuscado = textNovoCadastro.Text;
             string Novasenha = texteNovaSenha.Text;
 
+
+
             if (string.IsNullOrWhiteSpace(NovoUsuarioBuscado))
             {
                 labelResultado.Text = "usuario e obrgatorio!";
@@ -118,12 +108,25 @@ namespace login
                 return;
             }
 
+
             if (string.IsNullOrWhiteSpace(Novasenha))
             {
 
                 labelResultado.Text = "Novo Usuario e senha necessaria";
-                labelResultado.ForeColor = System.Drawing.Color.Red;
+                labelResultado.ForeColor = Color.Red;
+                return;
+            }
 
+            bool temMaiuscula = Novasenha.Any(char.IsUpper);
+            bool temNumero = Novasenha.Any(char.IsDigit);
+            bool temcaracters = Regex.IsMatch(Novasenha, @"[!#$%&'()*_+\'{}]");
+          
+
+            if (!(temMaiuscula && temNumero && temcaracters))
+            {
+                labelResultado.Text = "senha Fraca! a senha precisa de uma letra maiuscula, numeros e um caracter especial";
+                labelResultado.ForeColor = Color.Red;
+                return ;
             }
 
             bool usuarioBuscado = false;
@@ -133,9 +136,8 @@ namespace login
                 {
                     usuarioBuscado = true;
                 }
-
-
             }
+
             if (!usuarioBuscado)
             {
                 listaUsuarios.Add(NovoUsuarioBuscado);
@@ -143,13 +145,15 @@ namespace login
                 labelResultado.Text = "Autenticado com sucesso !";
                 labelResultado.ForeColor = Color.Green;
             }
-           else 
+            else
             {
-            
-                labelResultado.Text = "usuario JÁ Cadastrado, tente denovo ";
-                labelResultado.ForeColor = System.Drawing.Color.Red;
 
+                labelResultado.Text = "usuario JÁ Cadastrado, tente denovo ";
+                labelResultado.ForeColor = Color.Red;
             }
+
+
+
         }
     }
-}  
+} 
